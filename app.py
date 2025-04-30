@@ -41,10 +41,11 @@ def add_to_cart(product_id):
     quantity = int(request.form.get('quantity', 1))
     product = next((p for p in products if p['id'] == product_id), None)
     if product:
-        if str(product_id) in session['cart']:
-            session['cart'][str(product_id)]['quantity'] += quantity
+        product_id_str = str(product_id)  # Kunci selalu string
+        if product_id_str in session['cart']:
+            session['cart'][product_id_str]['quantity'] += quantity
         else:
-            session['cart'][str(product_id)] = {'name': product['name'], 'price': product['price'], 'quantity': quantity}
+            session['cart'][product_id_str] = {'name': product['name'], 'price': product['price'], 'quantity': quantity}
         session.modified = True
         return redirect(url_for('cart'))
     return render_template('404.html'), 404
@@ -64,17 +65,19 @@ def cart():
 @app.route('/update_cart/<int:product_id>', methods=['POST'])
 def update_cart(product_id):
     quantity = int(request.form.get('quantity', 1))
-    if str(product_id) in session['cart']:
-        session['cart'][str(product_id)]['quantity'] = quantity
+    product_id_str = str(product_id)  # Kunci selalu string
+    if product_id_str in session['cart']:
+        session['cart'][product_id_str]['quantity'] = quantity
         if quantity <= 0:
-            del session['cart'][str(product_id)]
+            del session['cart'][product_id_str]
         session.modified = True
     return redirect(url_for('cart'))
 
 @app.route('/remove_from_cart/<int:product_id>')
 def remove_from_cart(product_id):
-    if str(product_id) in session['cart']:
-        del session['cart'][str(product_id)]
+    product_id_str = str(product_id)  # Kunci selalu string
+    if product_id_str in session['cart']:
+        del session['cart'][product_id_str]
         session.modified = True
     return redirect(url_for('cart'))
 
