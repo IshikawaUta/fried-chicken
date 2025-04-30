@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout - Toko Online</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Checkout</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Beranda</a></li>
+                    <li><a href="{{ url_for('product_list') }}">Produk</a></li>
+                    <li><a href="{{ url_for('cart') }}">Keranjang ({{ session['cart']|length }})</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br>
+    <br>
+    <center>
+    <marquee behavior="right" direction="slide" scrollamount="10" scrolldelay="100" width="30%" style="font-weight: bold;">Terimakasih atas pesanan Anda</marquee>
+    </center>
+    <br>
+    <br>
+    <main>
+        {% if message %}
+        <p class="success">{{ message }}</p>
+        {% if whatsapp_link %}
+        <p>Klik tombol di bawah ini untuk mengirim konfirmasi pesanan melalui WhatsApp:</p>
+        <a href="{{ whatsapp_link }}" class="button" target="_blank" rel="noopener noreferrer">Kirim via WhatsApp</a>
+        {% endif %}
+        {% else %}
+        <h2>Konfirmasi Pesanan Anda</h2>
+        <p>Terima kasih atas pesanan Anda!</p>
+        {% endif %}
+        <p><a href="{{ url_for('product_list') }}" class="back">Kembali ke Daftar Produk</a></p>
+        <center>
+            <p>kontak saya</p>
+            <a href="https://wa.me/+62895701060973?text=hallo%20ka"><img src="https://img.icons8.com/plasticine/100/000000/whatsapp.png" width="40" class="filter"/></a>
+            <a href="https://github.com/IshikawaUta"><img src="https://img.icons8.com/plasticine/100/000000/github.png" width="40" class="filter"/></a>
+            <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=komikers09@gmail.com"><img src="https://img.icons8.com/plasticine/100/000000/gmail.png" width="40" class="filter"/></a>
+        </center>
+    </main>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>
+        <p>&copy; 2025 uta chicken</p>
+    </footer>
+</body>
+</html>

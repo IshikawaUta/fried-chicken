@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Produk - Toko Online</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Produk</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Beranda</a></li>
+                    <li><a href="{{ url_for('product_list') }}">Produk</a></li>
+                    <li><a href="{{ url_for('cart') }}">Keranjang ({{ session['cart']|length }})</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-item">
+                <img src="{{ product.image }}" alt="{{ product.name }}" width="150">
+                <h3>{{ product.name }}</h3>
+                <p>Harga: Rp {{ product.price }}</p>
+                <p><a href="{{ url_for('product_detail', id=product.id) }}" class="button">Lihat Detail</a></p>
+            </div>
+            {% endfor %}
+        </div>
+        <center>
+            <p>kontak saya</p>
+            <a href="https://wa.me/+62895701060973?text=hallo%20ka"><img src="https://img.icons8.com/plasticine/100/000000/whatsapp.png" width="40" class="filter"/></a>
+            <a href="https://github.com/IshikawaUta"><img src="https://img.icons8.com/plasticine/100/000000/github.png" width="40" class="filter"/></a>
+            <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=komikers09@gmail.com"><img src="https://img.icons8.com/plasticine/100/000000/gmail.png" width="40" class="filter"/></a>
+        </center>
+    </main>
+    <footer>
+        <p>&copy; 2025 uta chicken</p>
+    </footer>
+</body>
+</html>

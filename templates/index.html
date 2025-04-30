@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beranda - Toko Online</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>uta chicken</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Beranda</a></li>
+                    <li><a href="{{ url_for('product_list') }}">Produk</a></li>
+                    <li><a href="{{ url_for('cart') }}">Keranjang ({{ session['cart']|length }})</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero" style="background-image: url('static/images/background.jpg');height: 300px; width: 93%;margin-left: 43px;border-radius: 5px;">
+            <h2>Selamat Datang uta chicken!</h2>
+            <p>kami menyediakan chicken lezat, gurih, dan renyah.</p>
+            <p>100% dijamin ketagihan</p>
+            <a href="{{ url_for('product_list') }}" class="button">pesan sekarang</a>
+        </section>
+    </main>
+    <center>
+        <p>kontak saya</p>
+        <a href="https://wa.me/+62895701060973?text=hallo%20ka"><img src="https://img.icons8.com/plasticine/100/000000/whatsapp.png" width="40" class="filter"/></a>
+        <a href="https://github.com/IshikawaUta"><img src="https://img.icons8.com/plasticine/100/000000/github.png" width="40" class="filter"/></a>
+        <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=komikers09@gmail.com"><img src="https://img.icons8.com/plasticine/100/000000/gmail.png" width="40" class="filter"/></a>
+    </center>
+    <footer>
+        <p>&copy; 2025 uta chicken</p>
+    </footer>
+</body>
+</html>

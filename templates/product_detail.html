@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }} - Toko Online</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>{{ product.name }}</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Beranda</a></li>
+                    <li><a href="{{ url_for('product_list') }}">Produk</a></li>
+                    <li><a href="{{ url_for('cart') }}">Keranjang ({{ session['cart']|length }})</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <main>
+        <div class="product-detail">
+            <img src="{{ url_for('static', filename=product.image.replace('static/', '', 1)) }}" alt="{{ product.name }}" width="300">
+            <h2>{{ product.name }}</h2>
+            <p>Harga: Rp {{ product.price }}</p>
+            <form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+                <label for="quantity">Jumlah:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1">
+                <button type="submit" class="update">Tambah ke Keranjang</button>
+            </form>
+            <p><a href="{{ url_for('product_list') }}" class="back">Kembali ke Daftar Produk</a></p>
+        </div>
+    </main>
+    <center>
+        <p>kontak saya</p>
+        <a href="https://wa.me/+62895701060973?text=hallo%20ka"><img src="https://img.icons8.com/plasticine/100/000000/whatsapp.png" width="40" class="filter"/></a>
+        <a href="https://github.com/IshikawaUta"><img src="https://img.icons8.com/plasticine/100/000000/github.png" width="40" class="filter"/></a>
+        <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=komikers09@gmail.com"><img src="https://img.icons8.com/plasticine/100/000000/gmail.png" width="40" class="filter"/></a>
+    </center>
+    <br>
+    <footer>
+        <p>&copy; 2025 uta chicken</p>
+    </footer>
+</body>
+</html>

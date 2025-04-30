@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keranjang Belanja - Toko Online</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Keranjang Belanja</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Beranda</a></li>
+                    <li><a href="{{ url_for('product_list') }}">Produk</a></li>
+                    <li><a href="{{ url_for('cart') }}">Keranjang ({{ session['cart']|length }})</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <main>
+        {% if cart_items %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Produk</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>Rp {{ item.price }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('update_cart', product_id=item.id) }}">
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="0">
+                            <button type="submit" class="update">Update</button>
+                        </form>
+                    </td>
+                    <td>Rp {{ item.price * item.quantity }}</td>
+                    <td><a href="{{ url_for('remove_from_cart', product_id=item.id) }}" class="delete">Hapus</a></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3" style="text-align: right;"><strong>Total Harga:</strong></td>
+                    <td><strong>Rp {{ total_price }}</strong></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="{{ url_for('checkout') }}" class="button">Checkout</a></p>
+        {% else %}
+        <p>Keranjang belanja Anda kosong.</p>
+        <p><a href="{{ url_for('product_list') }}" class="button">pesan sekarang</a></p>
+        {% endif %}
+    </main>
+    <center>
+        <p>kontak saya</p>
+        <a href="https://wa.me/+62895701060973?text=hallo%20ka"><img src="https://img.icons8.com/plasticine/100/000000/whatsapp.png" width="40" class="filter"/></a>
+        <a href="https://github.com/IshikawaUta"><img src="https://img.icons8.com/plasticine/100/000000/github.png" width="40" class="filter"/></a>
+        <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=komikers09@gmail.com"><img src="https://img.icons8.com/plasticine/100/000000/gmail.png" width="40" class="filter"/></a>
+    </center>
+    <footer>
+        <p>&copy; 2025 uta chicken</p>
+    </footer>
+</body>
+</html>

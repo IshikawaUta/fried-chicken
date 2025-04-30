@@ -1,0 +1,168 @@
+body {
+    font-family: courier;
+    text-transform: uppercase;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: red;
+    color: black;
+    border-radius: 5px;
+    padding: 2%;
+    text-align: left; /* Ubah ke left untuk konten header */
+}
+
+.header-content {
+    display: flex;
+    align-items: center; /* Vertikal alignment tengah */
+    justify-content: space-between; /* Judul dan menu terpisah */
+}
+
+header h1 {
+    margin: 0; /* Hilangkan margin default untuk h1 */
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Atur item menu dalam satu baris */
+}
+
+nav ul li {
+    margin-left: 20px; /* Beri jarak antar item menu */
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.hero {
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.filter {
+    filter: grayscale(1);
+}
+
+.filter:hover {
+    filter: grayscale(0);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-detail {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.product-detail img {
+    max-width: 200px;
+    height: 200px;
+}
+
+.update {
+    font-family: courier;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.back {
+    font-family: courier;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: inline-block;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.delete {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.success {
+    color: green;
+    margin-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 1%;
+    background-color: red;
+    color: black;
+    border-radius: 5px;
+}
