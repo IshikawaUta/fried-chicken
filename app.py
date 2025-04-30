@@ -20,6 +20,7 @@ products = [
 def before_request():
     if 'cart' not in session:
         session['cart'] = {}
+    print(f"Sesi di awal request: {session}") # Tambahkan ini
 
 @app.route('/')
 def index():
@@ -47,11 +48,14 @@ def add_to_cart(product_id):
         else:
             session['cart'][product_id_str] = {'name': product['name'], 'price': product['price'], 'quantity': quantity}
         session.modified = True
+        print(f"Sesi di add_to_cart (sesudah): {session}")  # Debugging
         return redirect(url_for('cart'))
+    print("Produk tidak ditemukan.")
     return render_template('404.html'), 404
 
 @app.route('/cart')
 def cart():
+    print(f"Sesi di cart: {session}")  # Debugging
     cart_items = []
     total_price = 0
     for product_id_str, details in session['cart'].items():
